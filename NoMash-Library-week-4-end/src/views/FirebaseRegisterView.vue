@@ -38,7 +38,7 @@ const register = () => {
     .then((data) => {
       console.log("Firebase Register Successful!");
       alert("Register Successful!");
-      router.push("/FireLogin"); // 注册成功后跳转到登录页
+      router.push("/FireLogin"); 
     })
     .catch((error) => {
       console.error(error.code, error.message);

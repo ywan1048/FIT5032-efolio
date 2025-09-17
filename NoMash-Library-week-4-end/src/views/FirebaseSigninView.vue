@@ -39,14 +39,23 @@ const signin = () => {
       console.log("Firebase Login Successful!");
       console.log("Current user:", auth.currentUser);
 
-      // 保存状态到 localStorage，BHeader.vue 就能显示用户
+    
+      if (email.value === "admin@test.com") {
+        console.log("Role: Admin");
+        localStorage.setItem("role", "admin");
+      } else {
+        console.log("Role: User");
+        localStorage.setItem("role", "user");
+      }
+
+ 
       localStorage.setItem("isAuthenticated", "true");
       localStorage.setItem("currentUser", email.value);
 
-      // 通知全局状态更新
+     
       window.dispatchEvent(new CustomEvent("auth-status-changed"));
 
-      // 跳转到首页
+
       router.push("/");
     })
     .catch((error) => {
